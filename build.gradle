@@ -1,0 +1,121 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("org.projectlombok:lombok:${lombok}")
+    }
+}
+
+plugins {
+    id 'scala'
+    id 'groovy'
+    id 'java'
+    id 'java-library'
+    id 'application'
+    id 'maven-publish'
+}
+
+allprojects {
+    group = "${group}"
+    version = "${version}"
+    buildDir = 'target'
+
+    apply plugin: 'scala'
+    apply plugin: 'groovy'
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+
+    java {
+        modularity.inferModulePath = true
+        sourceCompatibility = JavaVersion.VERSION_16
+        targetCompatibility = JavaVersion.VERSION_16
+        withJavadocJar()
+        withSourcesJar()
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        compileOnly "org.projectlombok:lombok:${lombok}"
+        compileOnly "org.slf4j:slf4j-api:${slf4j}"
+        implementation "org.scala-lang:scala-library:${scala}"
+        annotationProcessor "org.projectlombok:lombok:${lombok}"
+    }
+
+    configurations {
+        configurations {
+            all*.exclude group: 'commons-logging', module: 'commons-logging'
+            all*.exclude group: 'log4j'
+            all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        }
+    }
+
+    jar {
+        manifest {
+            attributes('Implementation-Title': project.name,
+                    'Implementation-Version': project.version,
+                    'Built-By': System.getProperty('user.name'),
+                    'Built-JDK': System.getProperty('java.version'),
+                    'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"))
+        }
+    }
+
+    compileGroovy {
+        groovyOptions.encoding = 'MacRoman'
+        options.compilerArgs << '-parameters'
+    }
+
+    compileJava {
+        options.fork = true
+        options.incremental = true
+        options.failOnError = false
+        options.encoding = "${sourceEncoding}"
+        options.compilerArgs << '-parameters'
+        options.compilerArgs << '-Xlint:deprecation'
+        options.compilerArgs << '-Xlint:unchecked'
+        options.compilerArgs << '-nowarn'
+    }
+
+    compileTestJava {
+        options.fork = true
+        options.incremental = true
+        options.failOnError = false
+        options.encoding = "${sourceEncoding}"
+        options.compilerArgs << '-parameters'
+        options.compilerArgs << '-Xlint:deprecation'
+        options.compilerArgs << '-Xlint:unchecked'
+        options.compilerArgs << '-nowarn'
+    }
+
+    javadoc {
+        options.encoding = "${sourceEncoding}"
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', "${sourceEncoding}")
+        options.addStringOption('charSet', "${sourceEncoding}")
+    }
+
+    publishing {
+        repositories {
+            maven {
+                credentials {
+                    username mvnUser
+                    password mvnPasswd
+                }
+                if (project.version.endsWith("-SNAPSHOT")) {
+                    url 'http://nexus.ducesoft.com/nexus/content/repositories/snapshots/'
+                } else {
+                    url 'http://nexus.ducesoft.com/nexus/content/repositories/releases/'
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+def skipDirectories = ~/^(build|\..*|src|out|profiles|target|bin|classes|bin-groovy|script|settings)/
+
+rootDir.traverse(type: groovy.io.FileType.DIRECTORIES, preDir: { path ->
+    if (skipDirectories.matcher(path.name).matches()) {
+        return groovy.io.FileVisitResult.SKIP_SUBTREE
+    }
+}) { dir ->
+    if (new File((String) (dir.toString() + "/build.gradle")).exists()) {
+        include ":" + (dir.toString() - rootDir.toString() - "/").toString().replaceAll("/", ":")
+    }
+}

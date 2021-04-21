@@ -1,0 +1,6 @@
+dependencies {
+    api "com.google.code.gson:gson:${gson}"
+    api "com.alibaba:fastjson:${fastjson}"
+    api "com.fasterxml.jackson.core:jackson-annotations:${jackson}"
+    implementation "org.antlr:antlr4-runtime:${antlr4}"
+}
