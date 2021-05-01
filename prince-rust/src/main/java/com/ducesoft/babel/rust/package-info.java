@@ -6,4 +6,4 @@
  *//**
  * @author coyzeng@gmail.com
  */
-package com.ducesoft.babel.golang;
+package com.ducesoft.babel.rust;
