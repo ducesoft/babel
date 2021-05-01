@@ -26,6 +26,7 @@ allprojects {
     apply plugin: 'scala'
     apply plugin: 'groovy'
     apply plugin: 'java'
+    apply plugin: 'antlr'
     apply plugin: 'java-library'
 
     java {
@@ -103,7 +104,8 @@ allprojects {
     }
 
     generateGrammarSource {
-
+        source = 'src/antlr4'
+        outputDirectory = file("src/main/java/com/ducesoft/babel/${project.name.replace('prince-', '')}/grammar")
     }
 
     publishing {
