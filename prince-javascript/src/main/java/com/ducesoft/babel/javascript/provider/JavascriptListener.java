@@ -4,12 +4,11 @@
  *
  *
  */
-package com.ducesoft.babel.emperor.spi;
+package com.ducesoft.babel.javascript.provider;
+
+import com.ducesoft.babel.javascript.grammar.JavaScriptParserBaseListener;
 
 /**
  * @author coyzeng@gmail.com
  */
-public interface Interpreter {
-
-    void print() throws Throwable;
-}
+public class JavascriptListener extends JavaScriptParserBaseListener {}

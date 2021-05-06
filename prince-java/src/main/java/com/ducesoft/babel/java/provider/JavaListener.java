@@ -4,12 +4,13 @@
  *
  *
  */
-package com.ducesoft.babel.emperor.spi;
+package com.ducesoft.babel.java.provider;
+
+import com.ducesoft.babel.java.grammar.JavaParserBaseListener;
 
 /**
  * @author coyzeng@gmail.com
  */
-public interface Interpreter {
+public class JavaListener extends JavaParserBaseListener {
 
-    void print() throws Throwable;
 }

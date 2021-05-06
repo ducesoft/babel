@@ -6,15 +6,9 @@
  */
 package com.ducesoft.babel.rust.provider;
 
-import com.ducesoft.babel.emperor.spi.Interpreter;
+import com.ducesoft.babel.rust.grammar.RustParserBaseListener;
 
 /**
  * @author coyzeng@gmail.com
  */
-public class RustInterpreter implements Interpreter {
-
-    @Override
-    public void print() throws Throwable {
-
-    }
-}
+public class RustListener extends RustParserBaseListener {}

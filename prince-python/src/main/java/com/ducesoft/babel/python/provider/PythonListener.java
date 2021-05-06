@@ -4,12 +4,11 @@
  *
  *
  */
-package com.ducesoft.babel.emperor.spi;
+package com.ducesoft.babel.python.provider;
+
+import com.ducesoft.babel.python.grammar.PythonParserBaseListener;
 
 /**
  * @author coyzeng@gmail.com
  */
-public interface Interpreter {
-
-    void print() throws Throwable;
-}
+public class PythonListener extends PythonParserBaseListener {}

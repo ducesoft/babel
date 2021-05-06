@@ -17,6 +17,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  */
 public class GolangListener implements GoParserListener {
 
+
     @Override
     public void enterSourceFile(SourceFileContext ctx) {
 

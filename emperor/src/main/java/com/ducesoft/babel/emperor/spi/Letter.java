@@ -6,10 +6,17 @@
  */
 package com.ducesoft.babel.emperor.spi;
 
+import java.lang.annotation.*;
+
 /**
  * @author coyzeng@gmail.com
  */
-public interface Interpreter {
+@Inherited
+@Documented
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Letter {
 
-    void print() throws Throwable;
+    String[] value();
+
 }

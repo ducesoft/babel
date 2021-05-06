@@ -4,17 +4,14 @@
  *
  *
  */
-package com.ducesoft.babel.rust.provider;
-
-import com.ducesoft.babel.emperor.spi.Interpreter;
+package com.ducesoft.babel.emperor.kit;
 
 /**
  * @author coyzeng@gmail.com
  */
-public class RustInterpreter implements Interpreter {
+public record RunArg(String repo, String output, String include, String exclude, String group) {
 
-    @Override
-    public void print() throws Throwable {
-
+    public RunArg() {
+        this("", "", "", "", "");
     }
 }
