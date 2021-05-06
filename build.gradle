@@ -105,11 +105,10 @@ allprojects {
     }
 
     generateGrammarSource {
-        if (file('src/antlr4').exists()) {
-            arguments += ['-package', "com.ducesoft.babel.${project.name.replace('prince-', '')}.grammar".toString()]
-            outputDirectory = file("src/main/java")
-            inputs.files(source.files)
-        }
+        arguments << '-package'
+        arguments << "com.ducesoft.babel.${project.name.replace('prince-', '')}.grammar".toString()
+        arguments << '-visitor'
+        outputDirectory = file("src/main/java/com/ducesoft/babel/${project.name.replace('prince-', '')}/grammar")
     }
 
     publishing {

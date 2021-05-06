@@ -1,4 +1,4 @@
-// Generated from /Users/ducer/Company/ducesoft/babel/prince-python/src/antlr4/PythonParser.g4 by ANTLR 4.9.1
+// Generated from PythonParser.g4 by ANTLR 4.9.2
 package com.ducesoft.babel.python.grammar;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 

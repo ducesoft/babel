@@ -1,4 +1,4 @@
-// Generated from /Users/ducer/Company/ducesoft/babel/prince-python/src/antlr4/PythonParser.g4 by ANTLR 4.9.1
+// Generated from PythonParser.g4 by ANTLR 4.9.2
 package com.ducesoft.babel.python.grammar;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class PythonParser extends PythonParserBase {
-	static { RuntimeMetaData.checkVersion("4.9.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =

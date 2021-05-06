@@ -1,4 +1,4 @@
-// Generated from /Users/ducer/Company/ducesoft/babel/prince-javascript/src/antlr4/JavaScriptParser.g4 by ANTLR 4.9.1
+// Generated from JavaScriptParser.g4 by ANTLR 4.9.2
 package com.ducesoft.babel.javascript.grammar;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 

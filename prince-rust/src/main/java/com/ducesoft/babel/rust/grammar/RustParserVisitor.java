@@ -1,4 +1,4 @@
-// Generated from /Users/ducer/Company/ducesoft/babel/prince-rust/src/antlr4/RustParser.g4 by ANTLR 4.9.1
+// Generated from RustParser.g4 by ANTLR 4.9.2
 package com.ducesoft.babel.rust.grammar;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
