@@ -4,8 +4,9 @@
  *
  *
  */
-package com.ducesoft.babel.emperor.spi;
+package com.ducesoft.babel.java.provider;
 
+import com.ducesoft.babel.emperor.spi.Repository;
 import com.ducesoft.babel.emperor.struct.Dependency;
 
 import java.nio.file.Path;
@@ -13,14 +14,10 @@ import java.nio.file.Path;
 /**
  * @author coyzeng@gmail.com
  */
-public interface LibraryLoader {
+public class MavenRepository implements Repository {
 
-    /**
-     * Load the dependency source to local directory.
-     *
-     * @param dependency source library dependency
-     * @return directory of local source
-     */
-    Path load(Dependency dependency);
-
+    @Override
+    public Path load(Dependency dependency) {
+        return null;
+    }
 }

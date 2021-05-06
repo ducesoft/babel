@@ -4,11 +4,14 @@
  *
  *
  */
-package com.ducesoft.babel.rust.provider;
-
-import com.ducesoft.babel.rust.grammar.RustParserBaseListener;
+package com.ducesoft.babel.emperor.tool;
 
 /**
  * @author coyzeng@gmail.com
  */
-public class RustListener extends RustParserBaseListener {}
+public record RunArg(String repo, String output, String include, String exclude, String group) {
+
+    public RunArg() {
+        this("", "", "", "", "");
+    }
+}

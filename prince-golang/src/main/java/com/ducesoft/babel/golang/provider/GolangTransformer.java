@@ -6,6 +6,7 @@
  */
 package com.ducesoft.babel.golang.provider;
 
+import com.ducesoft.babel.emperor.spi.Transformer;
 import com.ducesoft.babel.golang.grammar.GoParser.*;
 import com.ducesoft.babel.golang.grammar.GoParserListener;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -15,7 +16,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 /**
  * @author coyzeng@gmail.com
  */
-public class GolangListener implements GoParserListener {
+public class GolangTransformer implements GoParserListener,
+                                          Transformer {
 
 
     @Override

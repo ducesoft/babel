@@ -9,13 +9,13 @@ package com.ducesoft.babel.golang.provider;
 import com.ducesoft.babel.emperor.spi.Interpreter;
 import com.ducesoft.babel.emperor.spi.Language;
 import com.ducesoft.babel.emperor.spi.Letter;
+import com.ducesoft.babel.emperor.spi.Transformer;
 import com.ducesoft.babel.golang.grammar.GoLexer;
 import com.ducesoft.babel.golang.grammar.GoParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.TokenStream;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
  * @author coyzeng@gmail.com
@@ -23,7 +23,7 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 @Letter({"*.go"})
 public class Golang implements Language {
 
-    private final GolangListener listener = new GolangListener();
+    private final GolangTransformer transformer = new GolangTransformer();
 
     @Override
     public Lexer createLexer(CharStream chars) {
@@ -36,8 +36,8 @@ public class Golang implements Language {
     }
 
     @Override
-    public ParseTreeListener getListener() {
-        return this.listener;
+    public Transformer getTransformer() {
+        return this.transformer;
     }
 
     @Override

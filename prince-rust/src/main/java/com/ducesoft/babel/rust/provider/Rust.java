@@ -9,13 +9,13 @@ package com.ducesoft.babel.rust.provider;
 import com.ducesoft.babel.emperor.spi.Interpreter;
 import com.ducesoft.babel.emperor.spi.Language;
 import com.ducesoft.babel.emperor.spi.Letter;
+import com.ducesoft.babel.emperor.spi.Transformer;
 import com.ducesoft.babel.rust.grammar.RustLexer;
 import com.ducesoft.babel.rust.grammar.RustParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.TokenStream;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
  * @author coyzeng@gmail.com
@@ -23,7 +23,7 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 @Letter({"*.rs"})
 public class Rust implements Language {
 
-    private final RustListener listener = new RustListener();
+    private final RustTransformer transformer = new RustTransformer();
 
     @Override
     public Lexer createLexer(CharStream chars) {
@@ -36,8 +36,8 @@ public class Rust implements Language {
     }
 
     @Override
-    public ParseTreeListener getListener() {
-        return this.listener;
+    public Transformer getTransformer() {
+        return this.transformer;
     }
 
     @Override

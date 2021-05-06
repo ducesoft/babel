@@ -4,7 +4,7 @@
  *
  *
  */
-package com.ducesoft.babel.emperor.kit;
+package com.ducesoft.babel.emperor.tool;
 
 import com.ducesoft.babel.emperor.spi.Interpreter;
 import com.ducesoft.babel.emperor.spi.Language;
@@ -80,7 +80,7 @@ public class Main {
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             Parser            parser = lang.get().createParser(tokens);
             ParseTreeWalker   walker = new ParseTreeWalker();
-            walker.walk(lang.get().getListener(), parser.getContext());
+            walker.walk(lang.get().getTransformer(), parser.getContext());
         }
         for (Language lang : languages) {
             Interpreter interpreter = lang.getInterpreter();

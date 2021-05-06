@@ -6,11 +6,12 @@
  */
 package com.ducesoft.babel.java.provider;
 
+import com.ducesoft.babel.emperor.spi.Transformer;
 import com.ducesoft.babel.java.grammar.JavaParserBaseListener;
 
 /**
  * @author coyzeng@gmail.com
  */
-public class JavaListener extends JavaParserBaseListener {
+public class JavaTransformer extends JavaParserBaseListener implements Transformer {
 
 }

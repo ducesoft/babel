@@ -4,7 +4,7 @@
  *
  *
  */
-package com.ducesoft.babel.emperor.kit;
+package com.ducesoft.babel.emperor.tool;
 
 import com.ducesoft.babel.emperor.struct.Method;
 import com.ducesoft.babel.emperor.struct.Type;

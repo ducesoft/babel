@@ -6,9 +6,10 @@
  */
 package com.ducesoft.babel.python.provider;
 
+import com.ducesoft.babel.emperor.spi.Transformer;
 import com.ducesoft.babel.python.grammar.PythonParserBaseListener;
 
 /**
  * @author coyzeng@gmail.com
  */
-public class PythonListener extends PythonParserBaseListener {}
+public class PythonTransformer extends PythonParserBaseListener implements Transformer {}

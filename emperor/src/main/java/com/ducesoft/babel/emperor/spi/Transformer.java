@@ -4,11 +4,11 @@
  *
  *
  */
-package com.ducesoft.babel.javascript.provider;
+package com.ducesoft.babel.emperor.spi;
 
-import com.ducesoft.babel.javascript.grammar.JavaScriptParserBaseListener;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
  * @author coyzeng@gmail.com
  */
-public class JavascriptListener extends JavaScriptParserBaseListener {}
+public interface Transformer extends ParseTreeListener {}

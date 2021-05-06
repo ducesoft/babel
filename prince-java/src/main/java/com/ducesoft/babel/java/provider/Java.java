@@ -9,13 +9,13 @@ package com.ducesoft.babel.java.provider;
 import com.ducesoft.babel.emperor.spi.Interpreter;
 import com.ducesoft.babel.emperor.spi.Language;
 import com.ducesoft.babel.emperor.spi.Letter;
+import com.ducesoft.babel.emperor.spi.Transformer;
 import com.ducesoft.babel.java.grammar.JavaLexer;
 import com.ducesoft.babel.java.grammar.JavaParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.TokenStream;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
  * @author coyzeng@gmail.com
@@ -23,7 +23,7 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 @Letter({"*.java"})
 public class Java implements Language {
 
-    private final JavaListener listener = new JavaListener();
+    private final JavaTransformer transformer = new JavaTransformer();
 
     @Override
     public Lexer createLexer(CharStream chars) {
@@ -36,8 +36,8 @@ public class Java implements Language {
     }
 
     @Override
-    public ParseTreeListener getListener() {
-        return this.listener;
+    public Transformer getTransformer() {
+        return this.transformer;
     }
 
     @Override

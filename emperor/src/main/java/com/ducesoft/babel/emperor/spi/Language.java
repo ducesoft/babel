@@ -10,7 +10,6 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.TokenStream;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
  * @author coyzeng@gmail.com
@@ -21,7 +20,7 @@ public interface Language {
 
     Parser createParser(TokenStream ts);
 
-    ParseTreeListener getListener();
+    Transformer getTransformer();
 
     Interpreter getInterpreter();
 }
