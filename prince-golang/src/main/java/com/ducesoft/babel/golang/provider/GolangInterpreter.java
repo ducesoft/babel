@@ -6,9 +6,16 @@
  */
 package com.ducesoft.babel.golang.provider;
 
+import com.ducesoft.babel.emperor.spi.MtQueue;
 import com.ducesoft.babel.emperor.spi.Interpreter;
 
 /**
  * @author coyzeng@gmail.com
  */
-public class GolangInterpreter implements Interpreter {}
+public class GolangInterpreter implements Interpreter {
+
+    @Override
+    public void interpret(MtQueue queue) throws Throwable {
+
+    }
+}

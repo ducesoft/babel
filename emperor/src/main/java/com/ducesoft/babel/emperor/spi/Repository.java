@@ -21,6 +21,6 @@ public interface Repository {
      * @param dependency source library dependency
      * @return directory of local source
      */
-    Path load(Dependency dependency);
+    Path load(Dependency dependency) throws Throwable;
 
 }

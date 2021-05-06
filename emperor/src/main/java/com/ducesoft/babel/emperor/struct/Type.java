@@ -10,6 +10,8 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.lang.reflect.Modifier;
+import java.util.Deque;
 
 /**
  * @author coyzeng@gmail.com
@@ -18,5 +20,12 @@ import java.io.Serializable;
 public class Type implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 1677544541472571015L;
+    private static final long              serialVersionUID = 1677544541472571015L;
+    private              String            name;
+    private              String            kind;
+    private              Modifier          access;
+    private              Deque<Annotation> annotations;
+    private              Deque<Comment>    comments;
+    private              Deque<Variable>   variables;
+    private              Deque<Method>     methods;
 }

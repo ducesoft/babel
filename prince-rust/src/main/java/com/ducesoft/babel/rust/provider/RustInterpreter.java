@@ -6,6 +6,7 @@
  */
 package com.ducesoft.babel.rust.provider;
 
+import com.ducesoft.babel.emperor.spi.MtQueue;
 import com.ducesoft.babel.emperor.spi.Interpreter;
 
 /**
@@ -14,7 +15,7 @@ import com.ducesoft.babel.emperor.spi.Interpreter;
 public class RustInterpreter implements Interpreter {
 
     @Override
-    public void print() throws Throwable {
+    public void interpret(MtQueue queue) throws Throwable {
 
     }
 }

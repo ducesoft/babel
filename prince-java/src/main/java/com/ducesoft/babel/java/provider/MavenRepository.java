@@ -17,7 +17,7 @@ import java.nio.file.Path;
 public class MavenRepository implements Repository {
 
     @Override
-    public Path load(Dependency dependency) {
+    public Path load(Dependency dependency) throws Throwable {
         return null;
     }
 }

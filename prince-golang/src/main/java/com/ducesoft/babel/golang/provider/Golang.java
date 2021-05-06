@@ -24,6 +24,7 @@ import org.antlr.v4.runtime.TokenStream;
 public class Golang implements Language {
 
     private final GolangTransformer transformer = new GolangTransformer();
+    private final GolangInterpreter interpreter = new GolangInterpreter();
 
     @Override
     public Lexer createLexer(CharStream chars) {
@@ -42,6 +43,6 @@ public class Golang implements Language {
 
     @Override
     public Interpreter getInterpreter() {
-        return null;
+        return this.interpreter;
     }
 }

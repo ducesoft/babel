@@ -11,4 +11,8 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 /**
  * @author coyzeng@gmail.com
  */
-public interface Transformer extends ParseTreeListener {}
+public interface Transformer extends ParseTreeListener {
+
+    MtQueue transform();
+
+}

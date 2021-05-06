@@ -6,9 +6,11 @@
  */
 package com.ducesoft.babel.golang.provider;
 
+import com.ducesoft.babel.emperor.spi.MtQueue;
 import com.ducesoft.babel.emperor.spi.Transformer;
+import com.ducesoft.babel.emperor.tool.SourceTree;
 import com.ducesoft.babel.golang.grammar.GoParser.*;
-import com.ducesoft.babel.golang.grammar.GoParserListener;
+import com.ducesoft.babel.golang.grammar.GoParserBaseListener;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -16,28 +18,18 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 /**
  * @author coyzeng@gmail.com
  */
-public class GolangTransformer implements GoParserListener,
-                                          Transformer {
+public class GolangTransformer extends GoParserBaseListener implements Transformer {
 
-
-    @Override
-    public void enterSourceFile(SourceFileContext ctx) {
-
-    }
-
-    @Override
-    public void exitSourceFile(SourceFileContext ctx) {
-
-    }
+    private final SourceTree queue = new SourceTree();
 
     @Override
     public void enterPackageClause(PackageClauseContext ctx) {
-
+        queue.confinePackage(ctx.getChild(1).getText());
     }
 
     @Override
     public void exitPackageClause(PackageClauseContext ctx) {
-
+        queue.definePackage(ctx.getText());
     }
 
     @Override
@@ -1028,5 +1020,10 @@ public class GolangTransformer implements GoParserListener,
     @Override
     public void exitEveryRule(ParserRuleContext ctx) {
 
+    }
+
+    @Override
+    public MtQueue transform() {
+        return this.queue;
     }
 }

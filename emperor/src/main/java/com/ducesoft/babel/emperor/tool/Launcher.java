@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 /**
  * @author coyzeng@gmail.com
  */
-public class Main {
+public class Launcher {
 
     public static void main(String[] args) {
         try {
@@ -83,8 +83,9 @@ public class Main {
             walker.walk(lang.get().getTransformer(), parser.getContext());
         }
         for (Language lang : languages) {
+            var         ast         = lang.getTransformer().transform();
             Interpreter interpreter = lang.getInterpreter();
-            interpreter.print();
+            interpreter.interpret(ast);
         }
     }
 }

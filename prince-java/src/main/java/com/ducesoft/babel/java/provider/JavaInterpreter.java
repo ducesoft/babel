@@ -6,9 +6,16 @@
  */
 package com.ducesoft.babel.java.provider;
 
+import com.ducesoft.babel.emperor.spi.MtQueue;
 import com.ducesoft.babel.emperor.spi.Interpreter;
 
 /**
  * @author coyzeng@gmail.com
  */
-public class JavaInterpreter implements Interpreter {}
+public class JavaInterpreter implements Interpreter {
+
+    @Override
+    public void interpret(MtQueue queue) throws Throwable {
+
+    }
+}

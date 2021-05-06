@@ -4,12 +4,16 @@
  *
  *
  */
-package com.ducesoft.babel.emperor.spi;
+package com.ducesoft.babel.conqueror;
+
+import com.ducesoft.babel.emperor.tool.Launcher;
 
 /**
  * @author coyzeng@gmail.com
  */
-public interface Interpreter {
+public class Main {
 
-    void interpret(MtQueue queue) throws Throwable;
+    public static void main(String[] args) {
+        Launcher.main(args);
+    }
 }

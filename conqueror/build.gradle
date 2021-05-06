@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(":emperor")
+    implementation project(":prince-golang")
+    implementation project(":prince-java")
+    implementation project(":prince-javascript")
+    implementation project(":prince-python")
+    implementation project(":prince-rust")
+}

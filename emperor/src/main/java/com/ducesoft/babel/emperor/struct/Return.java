@@ -15,12 +15,10 @@ import java.io.Serializable;
  * @author coyzeng@gmail.com
  */
 @Data
-public class Dependency implements Serializable {
+public class Return implements Serializable {
 
     @Serial
-    private static final long   serialVersionUID = -7136595709543256349L;
-    private              String group;
-    private              String artifactId;
-    private              String version;
-    private              String scope;
+    private static final long   serialVersionUID = 6087706868024960441L;
+    private              String name;
+    private              Type   type;
 }

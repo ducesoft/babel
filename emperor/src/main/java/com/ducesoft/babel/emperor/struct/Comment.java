@@ -10,6 +10,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author coyzeng@gmail.com
@@ -18,5 +19,6 @@ import java.io.Serializable;
 public class Comment implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -806307843221074372L;
+    private static final long         serialVersionUID = -806307843221074372L;
+    private              List<String> texts;
 }

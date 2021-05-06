@@ -18,5 +18,7 @@ import java.io.Serializable;
 public class Parameter implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -1805025005051265107L;
+    private static final long   serialVersionUID = -1805025005051265107L;
+    private              String name;
+    private              Type   type;
 }

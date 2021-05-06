@@ -8,8 +8,10 @@ package com.ducesoft.babel.golang.provider;
 
 import com.ducesoft.babel.emperor.spi.Repository;
 import com.ducesoft.babel.emperor.struct.Dependency;
+import org.eclipse.jgit.api.Git;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * @author coyzeng@gmail.com
@@ -17,7 +19,10 @@ import java.nio.file.Path;
 public class GitRepository implements Repository {
 
     @Override
-    public Path load(Dependency dependency) {
-        return null;
+    public Path load(Dependency dependency) throws Throwable {
+        var clone = Git.cloneRepository();
+        clone.setURI("");
+        var git = clone.call();
+        return Paths.get(git.toString());
     }
 }

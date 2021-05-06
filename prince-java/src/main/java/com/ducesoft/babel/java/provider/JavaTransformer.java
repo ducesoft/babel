@@ -7,6 +7,7 @@
 package com.ducesoft.babel.java.provider;
 
 import com.ducesoft.babel.emperor.spi.Transformer;
+import com.ducesoft.babel.emperor.spi.MtQueue;
 import com.ducesoft.babel.java.grammar.JavaParserBaseListener;
 
 /**
@@ -14,4 +15,8 @@ import com.ducesoft.babel.java.grammar.JavaParserBaseListener;
  */
 public class JavaTransformer extends JavaParserBaseListener implements Transformer {
 
+    @Override
+    public MtQueue transform() {
+        return null;
+    }
 }
