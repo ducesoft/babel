@@ -6,10 +6,7 @@
  */
 package com.ducesoft.babel.java.provider;
 
-import com.ducesoft.babel.emperor.spi.Interpreter;
-import com.ducesoft.babel.emperor.spi.Language;
-import com.ducesoft.babel.emperor.spi.Letter;
-import com.ducesoft.babel.emperor.spi.Transformer;
+import com.ducesoft.babel.emperor.spi.*;
 import com.ducesoft.babel.java.grammar.JavaLexer;
 import com.ducesoft.babel.java.grammar.JavaParser;
 import org.antlr.v4.runtime.CharStream;
@@ -24,6 +21,11 @@ import org.antlr.v4.runtime.TokenStream;
 public class Java implements Language {
 
     private final JavaTransformer transformer = new JavaTransformer();
+
+    @Override
+    public Language withContext(Context context) {
+        return this;
+    }
 
     @Override
     public Lexer createLexer(CharStream chars) {

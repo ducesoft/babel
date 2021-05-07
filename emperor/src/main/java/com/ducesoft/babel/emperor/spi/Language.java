@@ -16,6 +16,8 @@ import org.antlr.v4.runtime.TokenStream;
  */
 public interface Language {
 
+    Language withContext(Context context);
+
     Lexer createLexer(CharStream chars);
 
     Parser createParser(TokenStream ts);

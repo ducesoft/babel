@@ -3,4 +3,6 @@ dependencies {
     api "com.alibaba:fastjson:${fastjson}"
     api "com.fasterxml.jackson.core:jackson-annotations:${jackson}"
     api "org.antlr:antlr4-runtime:${antlr4}"
+    api "com.beust:jcommander:${jcommander}"
+
 }

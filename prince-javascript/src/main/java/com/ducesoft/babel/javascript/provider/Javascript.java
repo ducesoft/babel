@@ -6,10 +6,7 @@
  */
 package com.ducesoft.babel.javascript.provider;
 
-import com.ducesoft.babel.emperor.spi.Interpreter;
-import com.ducesoft.babel.emperor.spi.Language;
-import com.ducesoft.babel.emperor.spi.Letter;
-import com.ducesoft.babel.emperor.spi.Transformer;
+import com.ducesoft.babel.emperor.spi.*;
 import com.ducesoft.babel.javascript.grammar.JavaScriptLexer;
 import com.ducesoft.babel.javascript.grammar.JavaScriptParser;
 import org.antlr.v4.runtime.CharStream;
@@ -24,6 +21,11 @@ import org.antlr.v4.runtime.TokenStream;
 public class Javascript implements Language {
 
     private final JavascriptTransformer transformer = new JavascriptTransformer();
+
+    @Override
+    public Language withContext(Context context) {
+        return this;
+    }
 
     @Override
     public Lexer createLexer(CharStream chars) {
