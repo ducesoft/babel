@@ -6,23 +6,25 @@
  */
 package com.ducesoft.babel.golang.provider;
 
+import com.ducesoft.babel.emperor.spi.Context;
 import com.ducesoft.babel.emperor.spi.Repository;
 import com.ducesoft.babel.emperor.struct.Dependency;
 import org.eclipse.jgit.api.Git;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 /**
+ * https://github.com/ducesoft/babel.git
+ *
  * @author coyzeng@gmail.com
  */
 public class GitRepository implements Repository {
 
     @Override
-    public Path load(Dependency dependency) throws Throwable {
+    public boolean accept(Context context, Dependency dependency) throws Throwable {
         var clone = Git.cloneRepository();
-        clone.setURI("");
+        clone.setURI(String.format("https://%s/%s.git", dependency.getGroup(), dependency.getArtifactId()));
+        clone.setDirectory(context.getWorkspace());
         var git = clone.call();
-        return Paths.get(git.toString());
+        context.println("Clone repository to {}", context.getWorkspace().getAbsolutePath());
+        return true;
     }
 }

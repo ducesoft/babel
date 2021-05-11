@@ -6,18 +6,18 @@
  */
 package com.ducesoft.babel.java.provider;
 
+import com.ducesoft.babel.emperor.spi.Context;
 import com.ducesoft.babel.emperor.spi.Repository;
 import com.ducesoft.babel.emperor.struct.Dependency;
-
-import java.nio.file.Path;
 
 /**
  * @author coyzeng@gmail.com
  */
 public class MavenRepository implements Repository {
 
+
     @Override
-    public Path load(Dependency dependency) throws Throwable {
-        return null;
+    public boolean accept(Context context, Dependency dependency) throws Throwable {
+        return false;
     }
 }

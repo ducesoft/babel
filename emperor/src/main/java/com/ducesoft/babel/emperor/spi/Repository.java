@@ -8,8 +8,6 @@ package com.ducesoft.babel.emperor.spi;
 
 import com.ducesoft.babel.emperor.struct.Dependency;
 
-import java.nio.file.Path;
-
 /**
  * @author coyzeng@gmail.com
  */
@@ -17,10 +15,13 @@ public interface Repository {
 
     /**
      * Load the dependency source to local directory.
+     * <p>
+     * If return true current repository accept the repository location.
      *
-     * @param dependency source library dependency
+     * @param context source library dependency
      * @return directory of local source
+     * @throws Throwable e
      */
-    Path load(Dependency dependency) throws Throwable;
+    boolean accept(Context context, Dependency dependency) throws Throwable;
 
 }
