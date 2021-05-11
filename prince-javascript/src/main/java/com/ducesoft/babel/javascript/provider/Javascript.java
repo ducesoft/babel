@@ -17,10 +17,11 @@ import org.antlr.v4.runtime.TokenStream;
 /**
  * @author coyzeng@gmail.com
  */
-@Letter({"*.js", "*.es", "*.es5", "*.es6"})
+@Lang({"*.js", "*.es", "*.es5", "*.es6"})
 public class Javascript implements Language {
 
     private final JavascriptTransformer transformer = new JavascriptTransformer();
+    private final JavascriptInterpreter interpreter = new JavascriptInterpreter();
 
     @Override
     public Language withContext(Context context) {
@@ -44,6 +45,6 @@ public class Javascript implements Language {
 
     @Override
     public Interpreter getInterpreter() {
-        return null;
+        return this.interpreter;
     }
 }

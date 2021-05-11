@@ -17,10 +17,11 @@ import org.antlr.v4.runtime.TokenStream;
 /**
  * @author coyzeng@gmail.com
  */
-@Letter({"*.py"})
+@Lang({"*.py"})
 public class Python implements Language {
 
     private final PythonTransformer transformer = new PythonTransformer();
+    private final PythonInterpreter interpreter = new PythonInterpreter();
 
     @Override
     public Language withContext(Context context) {
@@ -44,6 +45,6 @@ public class Python implements Language {
 
     @Override
     public Interpreter getInterpreter() {
-        return null;
+        return this.interpreter;
     }
 }

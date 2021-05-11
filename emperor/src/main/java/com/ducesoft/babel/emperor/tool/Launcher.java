@@ -10,7 +10,7 @@ import com.beust.jcommander.JCommander;
 import com.ducesoft.babel.emperor.spi.Context;
 import com.ducesoft.babel.emperor.spi.Interpreter;
 import com.ducesoft.babel.emperor.spi.Language;
-import com.ducesoft.babel.emperor.spi.Letter;
+import com.ducesoft.babel.emperor.spi.Lang;
 import com.ducesoft.babel.emperor.struct.BabelException;
 import com.ducesoft.babel.emperor.struct.Dependency;
 import org.antlr.v4.runtime.*;
@@ -20,18 +20,19 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.ServiceLoader.Provider;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
  * @author coyzeng@gmail.com
  */
 public class Launcher {
+
+    private Launcher() {
+    }
 
     public static void main(String[] args) {
         var arg      = new RunArg();
@@ -53,7 +54,7 @@ public class Launcher {
                 command.getConsole().println(version);
                 return;
             }
-            launcher.doGen(context);
+            launcher.transform(context);
         } catch (Throwable e) {
             e.printStackTrace();
             command.getConsole().println(e.getMessage());
@@ -99,10 +100,14 @@ public class Launcher {
         }
     }
 
-    public void doGen(Context context) throws Throwable {
-        Predicate<Path> includeTest = path -> path.getFileName().toString().endsWith(context.getArgs().getInclude());
-        Predicate<Path> excludeTest = path -> path.getFileName().toString().endsWith(context.getArgs().getExclude());
+    private boolean test(Path path, String expr) {
+        if (null == expr || expr.trim().equals("")) {
+            return true;
+        }
+        return path.getFileName().toString().matches(expr);
+    }
 
+    public void transform(Context context) throws Throwable {
         var root       = dependenceOfInput(context);
         var repository = Repositories.findAll();
         if (!repository.accept(context, root)) {
@@ -111,25 +116,25 @@ public class Launcher {
 
         List<Path>  sources = new ArrayList<>();
         Deque<Path> paths   = new ArrayDeque<>();
-        paths.push(Paths.get(URI.create(context.getArgs().getInput())));
-        while (null != paths.peek()) {
+        paths.push(context.getWorkspace().toPath());
+        while (!paths.isEmpty()) {
             Path path = paths.pop();
             if (Files.isDirectory(path)) {
                 Files.list(path).forEach(paths::push);
                 continue;
             }
-            if (!includeTest.test(path) || excludeTest.test(path)) {
+            if (!test(path, context.getArgs().getInclude()) || !test(path, context.getArgs().getExclude())) {
                 continue;
             }
             sources.add(path);
         }
         List<Language> languages = ServiceLoader.load(Language.class).stream()
-                                                .filter(lang -> lang.type().isAnnotationPresent(Letter.class))
+                                                .filter(lang -> lang.type().isAnnotationPresent(Lang.class))
                                                 .map(Provider::get).map(lang -> lang.withContext(context))
                                                 .collect(Collectors.toList());
         BiFunction<Path, List<Language>, Optional<Language>> selector = (path, providers) -> {
             for (Language provider : providers) {
-                for (String regex : provider.getClass().getAnnotation(Letter.class).value()) {
+                for (String regex : provider.getClass().getAnnotation(Lang.class).value()) {
                     if (path.toFile().getName().matches(regex)) {
                         return Optional.of(provider);
                     }

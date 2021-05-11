@@ -17,7 +17,7 @@ import org.antlr.v4.runtime.TokenStream;
 /**
  * @author coyzeng@gmail.com
  */
-@Letter({"*.go"})
+@Lang({"*.go"})
 public class Golang implements Language {
 
     private final GolangTransformer transformer = new GolangTransformer();

@@ -15,7 +15,7 @@ import java.lang.annotation.*;
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Letter {
+public @interface Lang {
 
     String[] value();
 

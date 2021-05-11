@@ -17,10 +17,11 @@ import org.antlr.v4.runtime.TokenStream;
 /**
  * @author coyzeng@gmail.com
  */
-@Letter({"*.rs"})
+@Lang({"*.rs"})
 public class Rust implements Language {
 
     private final RustTransformer transformer = new RustTransformer();
+    private final RustInterpreter interpreter = new RustInterpreter();
 
     @Override
     public Language withContext(Context context) {
@@ -44,6 +45,6 @@ public class Rust implements Language {
 
     @Override
     public Interpreter getInterpreter() {
-        return null;
+        return this.interpreter;
     }
 }

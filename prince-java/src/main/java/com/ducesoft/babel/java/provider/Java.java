@@ -17,10 +17,11 @@ import org.antlr.v4.runtime.TokenStream;
 /**
  * @author coyzeng@gmail.com
  */
-@Letter({"*.java"})
+@Lang({"*.java"})
 public class Java implements Language {
 
     private final JavaTransformer transformer = new JavaTransformer();
+    private final JavaInterpreter interpreter = new JavaInterpreter();
 
     @Override
     public Language withContext(Context context) {
@@ -44,6 +45,6 @@ public class Java implements Language {
 
     @Override
     public Interpreter getInterpreter() {
-        return null;
+        return this.interpreter;
     }
 }
